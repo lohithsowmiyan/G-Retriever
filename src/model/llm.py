@@ -44,21 +44,34 @@ class LLM(torch.nn.Module):
             self.tokenizer.padding_side = 'left'
         
         elif 'quant' in args.llm_model_name:
+            use_4bit = True
+
+            # Compute dtype for 4-bit base models
+            bnb_4bit_compute_dtype = "float16"
+
+            # Quantization type (fp4 or nf4)
+            bnb_4bit_quant_type = "nf4"
+
+            # Activate nested quantization for 4-bit base models (double quantization)
+            use_nested_quant = False
             bnb_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.float16,
-            legacy = False
+            load_in_4bit=use_4bit,
+            bnb_4bit_quant_type=bnb_4bit_quant_type,
+            bnb_4bit_compute_dtype=bnb_4bit_compute_dtyp,
+            use_nested_quant = False,
+            Legacy = False
            )
 
             model = AutoModelForCausalLM.from_pretrained(
             args.llama_model_path,
             quantization_config=bnb_config,
-            trust_remote_code=True
+            device_map =  {"": 0},
+            
            )
             
             self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, trust_remote_code=True)
             self.tokenizer.pad_token_id = 0
+            self.tokenizer.pad_token = self.tokenizer.eos_token
             self.tokenizer.padding_side = 'left'
 
         else : 
@@ -70,6 +83,7 @@ class LLM(torch.nn.Module):
             )
             self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, use_fast=False, revision=kwargs["revision"])
             self.tokenizer.pad_token_id = 0
+            self.tokenizer.pad_token = self.tokenizer.eos_token
             self.tokenizer.padding_side = 'left'
 
 
