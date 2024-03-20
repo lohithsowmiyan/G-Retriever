@@ -32,27 +32,32 @@ class LLM(torch.nn.Module):
             "device_map": "auto",
             "revision": "main",
         }
-        self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, use_fast=False, revision=kwargs["revision"])
-        self.tokenizer.pad_token_id = 0
-        self.tokenizer.padding_side = 'left'
+       
 
         if 'flan' in args.llm_model_name:
             model = AutoModelForSeq2SeqLM.from_pretrained(
                args.llm_model_path,
             )
+
+            self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, use_fast=False, revision=kwargs["revision"])
+            self.tokenizer.pad_token_id = 0
+            self.tokenizer.padding_side = 'left'
         
         elif 'quant' in args.llm_model_name:
             bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_quant_type="nf4",
             bnb_4bit_compute_dtype=torch.float16,
+            legacy = False
            )
 
             model = AutoModelForCausalLM.from_pretrained(
-            args.llm_model_name,
+            args.llama_model_path,
             quantization_config=bnb_config,
             trust_remote_code=True
            )
+            
+            self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, trust_remote_code=True)
 
         else : 
             model = AutoModelForCausalLM.from_pretrained(
@@ -61,6 +66,10 @@ class LLM(torch.nn.Module):
             low_cpu_mem_usage=True,
             **kwargs
             )
+            self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, use_fast=False, revision=kwargs["revision"])
+            self.tokenizer.pad_token_id = 0
+            self.tokenizer.padding_side = 'left'
+
 
         if args.llm_frozen == 'True':
             print("Freezing LLAMA!")
