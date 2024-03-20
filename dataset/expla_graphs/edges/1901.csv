@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,receives action,1
+1,not has subevent,2
+3,part of,1

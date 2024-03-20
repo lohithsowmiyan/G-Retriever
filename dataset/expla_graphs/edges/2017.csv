@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,not desires,1
+2,synonym of,0
+3,capable of,4
+4,used for,2

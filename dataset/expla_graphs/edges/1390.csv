@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,has property,1
+1,receives action,2
+2,synonym of,3
+3,synonym of,4

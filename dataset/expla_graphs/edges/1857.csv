@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,created by,1
+1,has context,2
+1,has context,3
+3,capable of,4
+5,capable of,0
+4,desires,6
+6,is a,7
+2,not capable of,4

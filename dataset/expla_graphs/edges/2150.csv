@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,part of,1
+0,is not a,2
+3,desires,4
+4,desires,5
+4,synonym of,1

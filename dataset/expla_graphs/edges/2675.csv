@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,capable of,1
+2,synonym of,3
+1,synonym of,4
+3,desires,5
+6,causes,0
+4,capable of,2

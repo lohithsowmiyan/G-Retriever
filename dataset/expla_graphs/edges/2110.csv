@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,not causes,1
+2,part of,3
+3,receives action,0
+3,not desires,4
+0,not causes,5
+6,part of,3

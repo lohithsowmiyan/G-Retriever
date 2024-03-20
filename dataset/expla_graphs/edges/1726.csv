@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,has subevent,1
+1,is a,2
+2,causes,3
+3,causes,4
+4,is not a,5
+4,has property,6

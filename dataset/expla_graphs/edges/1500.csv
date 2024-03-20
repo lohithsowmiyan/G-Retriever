@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,part of,1
+2,has property,3
+1,capable of,2
+4,desires,0
+0,not desires,5

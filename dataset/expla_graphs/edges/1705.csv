@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,antonym of,1
+2,receives action,0
+0,has context,3
+4,capable of,0

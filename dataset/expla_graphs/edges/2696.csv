@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,receives action,1
+0,synonym of,2
+1,capable of,3
+3,capable of,4
+4,has property,5
+5,synonym of,6
+1,antonym of,7
+7,is not a,6

@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,is not a,1
+1,has context,2
+2,is a,3
+2,not used for,4
+1,not capable of,5

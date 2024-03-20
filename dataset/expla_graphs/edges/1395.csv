@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has subevent,1
+0,has property,2
+3,part of,0
+4,causes,5
+5,synonym of,3

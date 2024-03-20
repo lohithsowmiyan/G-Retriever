@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,used for,1
+2,synonym of,1
+3,not has subevent,4
+3,causes,0

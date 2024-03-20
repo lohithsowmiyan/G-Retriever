@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,is a,1
+0,has subevent,2
+2,used for,3
+2,used for,4
+1,part of,5

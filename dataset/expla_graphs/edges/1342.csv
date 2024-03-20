@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,antonym of,1
+2,part of,3
+4,capable of,5
+5,desires,6
+6,created by,2
+0,desires,6

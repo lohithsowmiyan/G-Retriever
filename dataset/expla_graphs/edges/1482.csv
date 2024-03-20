@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,capable of,1
+1,has context,2
+0,is a,3
+3,desires,4
+1,is a,5
+5,desires,4

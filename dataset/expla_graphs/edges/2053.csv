@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,receives action,1
+2,has context,3
+3,has context,4
+4,has context,5
+1,has property,2
+5,antonym of,6

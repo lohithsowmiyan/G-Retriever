@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,desires,1
+1,desires,2
+2,has subevent,3
+3,has property,4
+4,is not a,5
+5,not desires,6
+6,has property,7
+7,is a,8

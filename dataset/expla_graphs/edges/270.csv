@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has subevent,1
+1,has property,2
+2,has context,3
+4,at location,5
+3,used for,4

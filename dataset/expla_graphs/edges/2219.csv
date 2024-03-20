@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,synonym of,1
+1,part of,2
+3,not created by,1

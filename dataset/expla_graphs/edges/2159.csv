@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,not capable of,1
+2,used for,3
+3,is not a,0
+4,not capable of,5
+1,antonym of,4

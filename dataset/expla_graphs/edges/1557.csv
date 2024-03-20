@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,not desires,1
+2,desires,1
+0,not used for,3
+3,has context,4
+3,synonym of,2
+0,synonym of,5
+5,desires,4

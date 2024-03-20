@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,capable of,1
+1,created by,2
+2,causes,3
+3,desires,4
+4,used for,5
+5,not created by,6
+6,has subevent,7

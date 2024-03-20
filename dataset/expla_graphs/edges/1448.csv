@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,synonym of,1
+2,has subevent,3
+1,capable of,2

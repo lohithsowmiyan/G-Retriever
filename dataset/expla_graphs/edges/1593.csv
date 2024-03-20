@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,is a,1
+1,at location,2
+3,antonym of,4
+1,has subevent,3
+5,part of,0
+3,used for,6
+1,not causes,7

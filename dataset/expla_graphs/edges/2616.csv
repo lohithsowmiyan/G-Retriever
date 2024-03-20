@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,is a,1
+1,capable of,2
+3,not part of,4
+2,desires,3
+3,is a,5
+4,is not a,5
+6,is a,1

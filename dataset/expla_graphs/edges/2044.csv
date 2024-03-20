@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,has subevent,1
+0,has subevent,2
+2,receives action,3
+1,has property,4
+2,not has property,4
+4,has property,5

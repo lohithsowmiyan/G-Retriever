@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,part of,1
+1,part of,2
+2,has context,3
+3,used for,4

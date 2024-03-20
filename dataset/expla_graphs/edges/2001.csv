@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,is a,1
+2,synonym of,3
+4,not has context,5
+2,not desires,6
+6,not capable of,4
+4,synonym of,7
+0,part of,2
+0,part of,3

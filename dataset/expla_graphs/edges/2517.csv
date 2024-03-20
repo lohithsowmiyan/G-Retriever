@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,has property,1
+1,has context,2
+2,has context,3
+3,is a,4
+4,has context,5
+5,has context,6
+6,causes,7
+7,has property,8

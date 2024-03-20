@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,causes,1
+1,causes,2
+2,not created by,3
+3,not part of,4
+4,not has property,5
+5,not used for,6
+7,part of,0
+6,has property,8

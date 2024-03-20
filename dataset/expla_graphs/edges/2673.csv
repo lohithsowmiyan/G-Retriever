@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has property,1
+1,has context,2
+2,causes,3
+3,antonym of,4
+5,part of,0

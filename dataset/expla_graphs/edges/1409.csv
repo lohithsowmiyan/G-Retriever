@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,is a,1
+2,capable of,3
+3,has context,4
+4,at location,5
+5,desires,6
+1,causes,7
+7,has context,2

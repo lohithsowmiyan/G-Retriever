@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,not causes,1
+1,not desires,2
+0,is a,3
+3,desires,4
+5,has context,6
+0,has context,5
+2,is not a,4
+6,not capable of,4

@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,synonym of,1
+1,has context,2
+2,has property,3
+3,antonym of,4
+4,has context,5
+5,has subevent,6

@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,not has context,1
+2,desires,3
+1,antonym of,2

@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has property,1
+1,created by,2
+2,used for,3
+3,not used for,4
+4,at location,5

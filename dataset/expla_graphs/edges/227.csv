@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,has context,1
+1,part of,2
+2,made of,3
+3,desires,4
+4,desires,5
+5,has subevent,6

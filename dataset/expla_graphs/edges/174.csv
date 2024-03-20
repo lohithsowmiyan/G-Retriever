@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,is a,1
+1,part of,2
+2,not used for,3
+3,not has property,4

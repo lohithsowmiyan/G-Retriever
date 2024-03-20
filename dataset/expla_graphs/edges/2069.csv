@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,has property,1
+0,created by,2
+2,created by,3
+3,created by,4
+4,antonym of,5
+6,receives action,2

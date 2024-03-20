@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,is a,1
+2,capable of,3
+3,receives action,4
+4,used for,0
+1,not desires,5

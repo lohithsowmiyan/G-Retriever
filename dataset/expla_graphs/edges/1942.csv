@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,has property,1
+1,has property,2
+0,has property,3
+3,receives action,4
+4,causes,5
+5,causes,6
+3,not causes,6
+4,has context,7

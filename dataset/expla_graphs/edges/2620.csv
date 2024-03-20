@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,is a,1
+1,receives action,2
+2,causes,3
+4,has context,5
+3,is a,4

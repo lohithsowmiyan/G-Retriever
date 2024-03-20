@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,is a,1
+1,capable of,2
+3,capable of,4
+2,antonym of,4
+5,synonym of,0
+2,has property,6
+2,has context,7

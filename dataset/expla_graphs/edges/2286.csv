@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,is a,1
+2,desires,0
+1,desires,3
+3,synonym of,4
+4,has property,5
+4,has property,6

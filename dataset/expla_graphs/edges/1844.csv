@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,not capable of,1
+0,is not a,2
+0,created by,3
+1,synonym of,4

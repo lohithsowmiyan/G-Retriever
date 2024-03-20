@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has property,1
+0,causes,2
+1,capable of,3
+3,causes,2
+4,not desires,2

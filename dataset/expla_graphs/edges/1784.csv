@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,part of,1
+2,not made of,1
+2,causes,3
+1,desires,4

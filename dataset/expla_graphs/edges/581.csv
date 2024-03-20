@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,is a,1
+0,has context,2
+2,desires,3
+4,desires,1

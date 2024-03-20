@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,desires,1
+1,used for,2
+1,not capable of,3
+2,not capable of,4

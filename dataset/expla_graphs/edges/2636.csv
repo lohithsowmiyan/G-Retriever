@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,is a,1
+2,is a,1
+3,has subevent,2
+3,has subevent,0
+4,desires,3
+1,desires,5

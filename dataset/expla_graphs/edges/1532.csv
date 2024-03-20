@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,has property,1
+0,used for,2
+0,has property,3
+3,is a,4
+4,not desires,5
+4,not has property,6
+1,antonym of,7

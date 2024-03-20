@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,not causes,1
+0,synonym of,2
+2,not causes,3

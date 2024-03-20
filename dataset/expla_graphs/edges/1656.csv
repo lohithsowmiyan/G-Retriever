@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,capable of,1
+1,part of,2
+2,part of,3
+4,receives action,0
+3,is a,5

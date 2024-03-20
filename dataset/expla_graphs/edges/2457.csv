@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,is a,1
+1,capable of,2
+3,at location,1
+1,capable of,4
+5,desires,4
+4,synonym of,2
+3,capable of,6

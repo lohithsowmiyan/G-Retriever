@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,created by,1
+1,used for,2
+2,desires,3
+3,not desires,4
+4,not used for,5
+5,desires,6

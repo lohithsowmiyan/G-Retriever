@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,not capable of,1
+1,not capable of,2
+0,not capable of,3
+3,not has context,4

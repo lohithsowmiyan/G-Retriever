@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,capable of,1
+0,not capable of,2
+1,is not a,3

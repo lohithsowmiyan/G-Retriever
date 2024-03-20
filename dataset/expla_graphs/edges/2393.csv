@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,causes,1
+2,has property,3
+4,part of,5
+1,not part of,4
+3,receives action,6
+5,desires,2
+6,has subevent,7
+7,created by,8

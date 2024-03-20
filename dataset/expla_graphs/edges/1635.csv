@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,at location,1
+2,part of,1
+0,has context,3

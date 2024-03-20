@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,capable of,1
+2,desires,1
+0,capable of,3
+3,capable of,4
+4,causes,5
+5,causes,6

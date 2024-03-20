@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,not has context,1
+2,not capable of,0
+3,synonym of,4
+4,not desires,0

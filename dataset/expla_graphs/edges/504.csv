@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,created by,1
+1,has context,2
+2,desires,3
+3,has context,4
+4,has context,5
+1,not desires,6
+6,created by,5
+5,not at location,7

@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,part of,1
+1,has context,2
+1,is a,3
+4,synonym of,5
+5,not desires,0
+1,not has context,6

@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,not desires,1
+2,part of,3
+4,synonym of,1
+3,not used for,1

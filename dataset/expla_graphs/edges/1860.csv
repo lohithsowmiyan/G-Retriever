@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,causes,1
+2,causes,3
+4,causes,2
+4,causes,1

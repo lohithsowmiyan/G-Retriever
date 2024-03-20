@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,not created by,1
+1,capable of,2
+2,not capable of,3
+3,part of,4
+4,desires,5
+5,capable of,6

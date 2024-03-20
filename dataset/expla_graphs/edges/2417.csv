@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,created by,1
+1,part of,2
+2,not created by,3
+3,has context,4
+4,part of,5
+5,not causes,6

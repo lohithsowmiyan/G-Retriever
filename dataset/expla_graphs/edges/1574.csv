@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,has property,1
+2,causes,3
+4,synonym of,5
+1,causes,6
+1,created by,7
+7,capable of,2
+8,has property,2
+3,causes,4

@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,has property,1
+1,receives action,2
+2,receives action,3
+3,has property,4
+4,not causes,5
+6,has subevent,0
+5,synonym of,7

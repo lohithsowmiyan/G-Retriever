@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,not used for,1
+1,has property,2
+2,has property,3

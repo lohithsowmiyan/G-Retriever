@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,capable of,1
+2,causes,3
+3,used for,4
+4,is a,5
+5,not capable of,6
+6,at location,7
+1,causes,8
+8,at location,2

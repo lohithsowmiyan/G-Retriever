@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,has property,1
+1,has property,2
+1,has property,3
+3,receives action,4
+4,causes,5
+6,at location,0
+5,causes,7

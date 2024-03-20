@@ -1,0 +1,4 @@
+src,edge_attr,dst
+0,not has property,1
+1,not has context,2
+0,not used for,3

@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has context,1
+2,has context,0
+3,not capable of,2
+0,not desires,4
+4,antonym of,5

@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,at location,1
+1,made of,2
+1,made of,3
+2,capable of,4
+2,capable of,5
+4,not causes,6
+5,not causes,7

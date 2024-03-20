@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,part of,1
+0,desires,2
+2,is a,3
+3,part of,1

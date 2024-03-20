@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,has property,1
+1,causes,2
+2,has context,3
+3,has property,4
+4,is a,5
+5,capable of,6
+6,capable of,7
+8,receives action,0

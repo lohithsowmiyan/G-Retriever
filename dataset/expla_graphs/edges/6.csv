@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,desires,1
+1,part of,2
+2,has property,3
+3,not part of,4
+4,is a,5

@@ -1,0 +1,9 @@
+src,edge_attr,dst
+0,capable of,1
+0,has context,2
+2,has property,3
+3,desires,4
+1,has property,5
+3,synonym of,6
+5,causes,7
+7,desires,4

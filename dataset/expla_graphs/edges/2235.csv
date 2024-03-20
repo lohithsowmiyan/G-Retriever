@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,created by,1
+2,capable of,0
+3,has subevent,4
+1,created by,3
+3,antonym of,5

@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,not desires,1
+0,causes,2
+3,synonym of,0
+0,desires,4

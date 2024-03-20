@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,receives action,1
+2,part of,3
+1,used for,2
+4,created by,1
+5,receives action,4
+1,has property,6

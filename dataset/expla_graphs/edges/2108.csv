@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,is a,1
+0,has subevent,2
+2,part of,3
+0,is not a,4
+0,not desires,5

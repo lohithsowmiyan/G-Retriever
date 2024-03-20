@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,is a,1
+2,capable of,3
+4,causes,5
+5,causes,2
+1,causes,4
+3,synonym of,6

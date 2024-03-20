@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,desires,1
+0,synonym of,2
+1,not created by,3
+3,has property,4
+4,not desires,5

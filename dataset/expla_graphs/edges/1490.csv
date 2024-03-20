@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,part of,1
+2,has property,3
+3,used for,4
+4,synonym of,0
+1,desires,5
+6,desires,2

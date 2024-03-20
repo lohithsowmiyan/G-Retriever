@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,is a,1
+1,at location,2
+3,desires,4
+4,receives action,5
+2,at location,6
+6,causes,3

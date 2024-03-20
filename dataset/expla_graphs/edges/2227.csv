@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,synonym of,1
+1,is a,2
+3,antonym of,1
+1,part of,4
+3,synonym of,5
+4,not desires,5

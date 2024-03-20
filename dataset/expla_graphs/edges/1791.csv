@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,not capable of,1
+2,is not a,3
+1,synonym of,3
+2,not desires,4
+0,is a,2
+2,not capable of,5

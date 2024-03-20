@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,has property,1
+1,causes,2
+3,has property,2
+0,has context,4
+4,desires,3
+2,has context,5
+5,not used for,6

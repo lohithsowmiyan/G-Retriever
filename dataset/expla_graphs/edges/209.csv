@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,created by,1
+0,created by,2
+3,used for,4
+5,is a,6
+6,created by,0
+1,causes,7
+7,is a,3

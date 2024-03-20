@@ -1,0 +1,5 @@
+src,edge_attr,dst
+0,is a,1
+2,not causes,0
+2,not desires,3
+3,synonym of,4

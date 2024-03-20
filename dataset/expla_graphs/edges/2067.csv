@@ -1,0 +1,7 @@
+src,edge_attr,dst
+0,is a,1
+1,capable of,2
+3,capable of,4
+0,used for,5
+2,part of,3
+0,synonym of,6

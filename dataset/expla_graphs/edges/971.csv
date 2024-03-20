@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,part of,1
+1,causes,2
+2,used for,3
+3,made of,4
+2,receives action,5

@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,causes,1
+1,capable of,2
+0,causes,3
+2,desires,4
+3,desires,4
+4,has subevent,5
+5,is a,6

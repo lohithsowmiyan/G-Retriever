@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,has property,1
+0,not has property,2
+3,created by,0
+3,capable of,1
+1,antonym of,4

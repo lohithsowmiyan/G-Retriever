@@ -1,0 +1,8 @@
+src,edge_attr,dst
+0,desires,1
+1,created by,2
+3,made of,4
+4,capable of,5
+5,used for,6
+6,part of,7
+7,part of,0

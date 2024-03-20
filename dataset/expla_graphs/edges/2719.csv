@@ -1,0 +1,6 @@
+src,edge_attr,dst
+0,receives action,1
+2,desires,3
+4,not has property,5
+0,not desires,4
+2,causes,5
