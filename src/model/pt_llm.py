@@ -2,7 +2,7 @@ import math
 import contextlib
 import torch
 from torch.cuda.amp import autocast as autocast
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM,AutoModelForSeq2SeqLM, BitsAndBytesConfig, AutoTokenizer
 from peft import (
     LoraConfig,
     get_peft_model,
@@ -39,12 +39,31 @@ class PromptTuningLLM(torch.nn.Module):
         self.tokenizer.pad_token_id = 0
         self.tokenizer.padding_side = 'left'
 
-        model = AutoModelForCausalLM.from_pretrained(
+        if 'flan' in args.llm_model_name:
+            model = AutoModelForSeq2SeqLM.from_pretrained(
+               args.llm_model_path,
+            )
+        
+        elif 'quant' in args.llm_model_name:
+            bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.float16,
+           )
+
+            model = AutoModelForCausalLM.from_pretrained(
+            args.llm_model_name,
+            quantization_config=bnb_config,
+            trust_remote_code=True
+           )
+
+        else : 
+            model = AutoModelForCausalLM.from_pretrained(
             args.llm_model_path,
             torch_dtype=torch.float16,
             low_cpu_mem_usage=True,
             **kwargs
-        )
+            )
 
         if args.llm_frozen == 'True':
             print("Freezing LLAMA!")
@@ -72,9 +91,15 @@ class PromptTuningLLM(torch.nn.Module):
             model = get_peft_model(model, config)
 
         self.model = model
-        print('Finish loading LLAMA!')
+        if 'flan' in args.llm_model_name:
+            self.word_embedding = self.model.get_input_embeddings()
 
-        self.word_embedding = self.model.model.get_input_embeddings()
+        elif 'quant' in args.llm_model_name:
+
+            self.word_embedding = self.model.get_input_embeddings()
+
+        else : 
+             self.word_embedding = self.model.model.get_input_embeddings()
 
         # prompt tuning
         init_token_ids = self.tokenizer(init_prompt).input_ids
