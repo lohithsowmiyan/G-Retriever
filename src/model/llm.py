@@ -58,6 +58,8 @@ class LLM(torch.nn.Module):
            )
             
             self.tokenizer = AutoTokenizer.from_pretrained(args.llm_model_path, trust_remote_code=True)
+            self.tokenizer.pad_token_id = 0
+            self.tokenizer.padding_side = 'left'
 
         else : 
             model = AutoModelForCausalLM.from_pretrained(
@@ -111,7 +113,7 @@ class LLM(torch.nn.Module):
     def device(self):
         return list(self.parameters())[0].device
 
-    def maybe_autocast(self, dtype=torch.bfloat16):
+    def maybe_autocast(self, dtype=torch.float16):
         # if on cpu, don't use autocast
         # if on gpu, use autocast with dtype if provided, otherwise use torch.float16
         enable_autocast = self.device != torch.device("cpu")
