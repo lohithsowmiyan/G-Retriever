@@ -14,7 +14,7 @@ load_model = {
 llama_model_path = {
     '7b': 'llama2/llama2_7b_hf',
     '13b': 'llama2/llama2_13b_hf',
-    '7b_chat': 'llama2/llama2_7b_chat_hf',
+    '7b_chat': 'meta-llama2/llama2_7b_chat_hf',
     '13b_chat': 'llama2/llama2_13b_chat_hf',
     '7b-quant': 'TinyPixel/Llama-2-7B-bf16-sharded',
     'flan-t5-large': "google/flan-t5-large",
