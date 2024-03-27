@@ -56,6 +56,7 @@ def main(args):
     num_training_steps = args.num_epochs * len(train_loader)
     progress_bar = tqdm(range(num_training_steps))
     best_val_loss = float('inf')
+    best_epoch = 0
 
     for epoch in range(args.num_epochs):
 
