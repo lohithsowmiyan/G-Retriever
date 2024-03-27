@@ -42,6 +42,7 @@ class PromptTuningLLM(torch.nn.Module):
         if 'flan' in args.llm_model_name:
             model = AutoModelForSeq2SeqLM.from_pretrained(
                args.llm_model_path,
+               device_map="auto",
             )
         
         elif 'quant' in args.llm_model_name:
