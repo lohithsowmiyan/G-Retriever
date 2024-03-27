@@ -8,7 +8,7 @@ from src.model.gnn import load_gnn_model
 from peft import (
     LoraConfig,
     get_peft_model,
-    prepare_model_for_int8_training,
+    #prepare_model_for_int8_training,
 )
 
 BOS = '<s>[INST]'
@@ -43,7 +43,7 @@ class GraphLLM(torch.nn.Module):
         if 'flan' in args.llm_model_name:
             model = AutoModelForSeq2SeqLM.from_pretrained(
                args.llm_model_path,
-                map_device = "auto"
+                device_map = "auto"
             )
         
         elif 'quant' in args.llm_model_name:
@@ -73,7 +73,7 @@ class GraphLLM(torch.nn.Module):
                 param.requires_grad = False
         else:
             print("Training LLAMA with LORA!")
-            model = prepare_model_for_int8_training(model)
+            model = [] # prepare_model_for_int8_training(model)
             lora_r: int = 8
             lora_alpha: int = 16
             lora_dropout: float = 0.05
@@ -106,7 +106,7 @@ class GraphLLM(torch.nn.Module):
         self.projector = nn.Sequential(
             nn.Linear(args.gnn_hidden_dim, 2048),
             nn.Sigmoid(),
-            nn.Linear(2048, 4096),
+            nn.Linear(2048, 768),
         ).to(self.model.device)
 
         if 'flan' in args.llm_model_name:
@@ -123,7 +123,7 @@ class GraphLLM(torch.nn.Module):
     def device(self):
         return list(self.parameters())[0].device
 
-    def maybe_autocast(self, dtype=torch.bfloat16):
+    def maybe_autocast(self, dtype=torch.float16):
         # if on cpu, don't use autocast
         # if on gpu, use autocast with dtype if provided, otherwise use torch.float16
         enable_autocast = self.device != torch.device("cpu")
@@ -153,8 +153,8 @@ class GraphLLM(torch.nn.Module):
         # encode special tokens
         eos_tokens = self.tokenizer(EOS, add_special_tokens=False)
         eos_user_tokens = self.tokenizer(EOS_USER, add_special_tokens=False)
-        bos_embeds = self.word_embedding(self.tokenizer(BOS, add_special_tokens=False, return_tensors='pt').input_ids[0].to(self.device)
-        pad_embeds = self.word_embedding(torch.tensor(self.tokenizer.pad_token_id).to(self.device).unsqueeze(0)
+        bos_embeds = self.word_embedding(self.tokenizer(BOS, add_special_tokens=False, return_tensors='pt').input_ids[0].to(self.device))
+        pad_embeds = self.word_embedding(torch.tensor(self.tokenizer.pad_token_id).to(self.device)).unsqueeze(0)
 
         # encode graphs
         graph_embeds = self.encode_graphs(samples)
@@ -188,8 +188,8 @@ class GraphLLM(torch.nn.Module):
         attention_mask = torch.tensor(batch_attention_mask).to(self.model.device)
         label_input_ids = torch.tensor(batch_label_input_ids).to(self.model.device)
 
-        with self.maybe_autocast():
-            outputs = self.model(
+        
+        outputs = self.model(
                 inputs_embeds=inputs_embeds,
                 attention_mask=attention_mask,
                 return_dict=True,
@@ -206,8 +206,8 @@ class GraphLLM(torch.nn.Module):
 
         # encode special tokens
         eos_user_tokens = self.tokenizer(EOS_USER, add_special_tokens=False)
-        bos_embeds = self.word_embedding(self.tokenizer(BOS, add_special_tokens=False, return_tensors='pt').input_ids[0])
-        pad_embeds = self.word_embedding(torch.tensor(self.tokenizer.pad_token_id)).unsqueeze(0)
+        bos_embeds = self.word_embedding(self.tokenizer(BOS, add_special_tokens=False, return_tensors='pt').input_ids[0].to(self.device))
+        pad_embeds = self.word_embedding(torch.tensor(self.tokenizer.pad_token_id).to(self.device)).unsqueeze(0)
 
         # encode graphs
         graph_embeds = self.encode_graphs(samples)
@@ -243,6 +243,7 @@ class GraphLLM(torch.nn.Module):
                 use_cache=True  # IMPORTANT!
             )
         pred = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
+        print(pred)
 
         return {'id': samples['id'],
                 'pred': pred,
