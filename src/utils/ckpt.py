@@ -49,7 +49,7 @@ def _reload_best_model(model, args):
 
     print("Loading checkpoint from {}.".format(checkpoint_path))
 
-    checkpoint = torch.load(checkpoint_path, map_location="cpu")
+    checkpoint = torch.load(checkpoint_path, map_location="cuda:0" if torch.cuda.is_available() else "cpu")
     model.load_state_dict(checkpoint["model"], strict=False)
 
     return model
@@ -62,7 +62,7 @@ def _reload_model(model, checkpoint_path):
 
     print("Loading checkpoint from {}.".format(checkpoint_path))
 
-    checkpoint = torch.load(checkpoint_path, map_location="cpu")
+    checkpoint = torch.load(checkpoint_path, map_location="cuda:0" if torch.cuda.is_available() else "cpu")
     model.load_state_dict(checkpoint["model"], strict=False)
 
     return model
