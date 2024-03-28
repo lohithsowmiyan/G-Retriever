@@ -20,4 +20,5 @@ llama_model_path = {
     'flan-t5-large': "google/flan-t5-large",
     'flan-t5-base' : 'google/flan-t5-base',
     'lite' : "ahxt/LiteLlama-460M-1T",
+    'tiny' : "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
 }
