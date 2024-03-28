@@ -107,7 +107,7 @@ class GraphLLM(torch.nn.Module):
         self.projector = nn.Sequential(
             nn.Linear(args.gnn_hidden_dim, 2048),
             nn.Sigmoid(),
-            nn.Linear(2048, 768),
+            nn.Linear(2048, 4096),
         ).to(self.model.device)
 
         if 'flan' in args.llm_model_name:
