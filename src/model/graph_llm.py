@@ -118,7 +118,7 @@ class GraphLLM(torch.nn.Module):
             self.word_embedding = self.model.get_input_embeddings()
 
         else : 
-             self.word_embedding = self.model.model.get_input_embeddings()
+             self.word_embedding = self.model.get_input_embeddings()
 
     @property
     def device(self):
