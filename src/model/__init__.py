@@ -19,4 +19,5 @@ llama_model_path = {
     '7b-quant': 'TheBloke/Llama-2-7B-Chat-GPTQ',
     'flan-t5-large': "google/flan-t5-large",
     'flan-t5-base' : 'google/flan-t5-base',
+    'lite' : "ahxt/LiteLlama-460M-1T",
 }
