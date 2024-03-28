@@ -62,9 +62,10 @@ class GraphLLM(torch.nn.Module):
         else : 
             model = AutoModelForCausalLM.from_pretrained(
             args.llm_model_path,
-            torch_dtype=torch.float16,
-            low_cpu_mem_usage=True,
-            **kwargs
+            device_map = "auto",
+            #torch_dtype=torch.float16,
+            #low_cpu_mem_usage=True,
+            #**kwargs
             )
 
         if args.llm_frozen == 'True':
