@@ -1,24 +1,30 @@
 from transformers import (
-    GPT2TokenizerFast,
+    #GPT2TokenizerFast,
     LlamaForCausalLM,
     LlamaConfig,
-    GPT2LMHeadModel,
+    #GPT2LMHeadModel,
+    AutoModelForCausalLM,
+    AutoTokenizer,
     Trainer,
     TrainingArguments,
     DataCollatorForLanguageModeling,
 )
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import  Subset
 from random import sample
+from torch.utils.data import DataLoader
+from src.utils.seed import seed_everything
+from src.config import parse_args_llama
+from src.model import load_model, llama_model_path
+from src.dataset import load_dataset
+from src.utils.evaluate import eval_funcs
+from src.utils.collate import collate_fn
 
 from pathlib import Path
 import wandb
-
-
-from babylm_dataset import BabylmDataset
-
 
 #############
 LR = 2.5e-4
@@ -29,38 +35,41 @@ TEMPERATURE = 2.0
 ALPHA = 0.5
 #############
 
-
-PATH = Path("./")
-
-teacher_dir1 = PATH / 'models/Llama-360M'
-teacher_dir2 = PATH / 'models/gpt-705M'
-
-
-MODEL_NAME = f'Baby-Llama-58M'
-MODEL_OUTPUT = Path('./models') /  MODEL_NAME
-EVAL_SAMPLES = 8192
-
-
 wandb_log = True
 
-
-
-tokenizer_path = PATH / "models/gpt-clean-16000.json"
-tokenizer = GPT2TokenizerFast(tokenizer_file= str(tokenizer_path))
-tokenizer.bos_token = "<s>"
-tokenizer.eos_token = "</s>"
-tokenizer.pad_token = "<pad>"
+args = parse_args_llama()
+dataset = load_dataset[args.dataset]()
+idx_split = dataset.get_idx_split()
 
 # in the original code I had random_chunk = False
 # random_chunk=True is expected to improve the model performance a bit
-train_dataset = BabylmDataset(PATH / "data/babylm_10M_clean", SEQ_LENGTH, tokenizer=tokenizer, random_chunk=True)
-full_eval_dataset = BabylmDataset(PATH / "data/babylm_dev_clean", SEQ_LENGTH, tokenizer=tokenizer, offset=0)
 
+train_dataset = [dataset[i] for i in idx_split['train']]
+train_loader = DataLoader(train_dataset, batch_size=args.eval_batch_size, drop_last=False, pin_memory=True, shuffle=False, collate_fn=collate_fn)
+
+train_dataset = train_loader
+
+eval_dataset = [dataset[i] for i in idx_split['val']]
+eval_loader = DataLoader(train_dataset, batch_size=args.eval_batch_size, drop_last=False, pin_memory=True, shuffle=False, collate_fn=collate_fn)
+
+full_eval_dataset = eval_loader
+
+EVAL_SAMPLES = 8192
 eval_indices = sample(range(len(full_eval_dataset)), EVAL_SAMPLES)
 eval_dataset = Subset(full_eval_dataset, eval_indices)
 
+PATH = Path("./")
 
+teacher_dir1 = llama_model_path[args.llm_model_name]
+#teacher_dir2 = PATH / 'models/gpt-705M'
 
+MODEL_NAME = f'Baby-Llama-58M'
+MODEL_OUTPUT = Path('./models') /  MODEL_NAME
+
+tokenizer = AutoTokenizer.from_pretrained(teacher_dir1)
+tokenizer.bos_token = "<s>[INST]"
+tokenizer.eos_token = "[/INST]"
+tokenizer.pad_token = "</s>"
 
 tokenizer.model_max_length = SEQ_LENGTH
 
@@ -70,9 +79,9 @@ config = LlamaConfig(
     num_hidden_layers=16,
     intermediate_size=1024,
     num_attention_heads=8,
-    bos_token_id=tokenizer.convert_tokens_to_ids("<s>"),
-    eos_token_id=tokenizer.convert_tokens_to_ids("</s>"),
-    pad_token_id=tokenizer.convert_tokens_to_ids("<pad>"),
+    bos_token_id=tokenizer.convert_tokens_to_ids("<s>[INST]"),
+    eos_token_id=tokenizer.convert_tokens_to_ids("[/INST]"),
+    pad_token_id=tokenizer.convert_tokens_to_ids("</s>"),
     max_position_embeddings=2*SEQ_LENGTH,
 )
 
@@ -80,26 +89,22 @@ student = LlamaForCausalLM(config)
 # student = LlamaForCausalLM.from_pretrained(student_dir)
 
 
-teacher1 = LlamaForCausalLM.from_pretrained(teacher_dir1)
-teacher2 = GPT2LMHeadModel.from_pretrained(teacher_dir2)
-teachers = [teacher1, teacher2]
+teacher1 = AutoModelForCausalLM.from_pretrained(teacher_dir1)
+#teacher2 = GPT2LMHeadModel.from_pretrained(teacher_dir2)
+#teachers = [teacher1, teacher2]
 
 
 data_collator = DataCollatorForLanguageModeling(
     tokenizer=tokenizer, mlm=False,
 )
 
-
 print(f'model num parameters: student = {student.num_parameters()}')
 print(f'model num parameters: teacher1 = {teacher1.num_parameters()}')
-print(f'model num parameters: teacher2 = {teacher2.num_parameters()}')
-
-
+#print(f'model num parameters: teacher2 = {teacher2.num_parameters()}')
 
 #  Distillation Trainer
 #  We modified the Trainer from this repo https://github.com/philschmid/knowledge-distillation-transformers-pytorch-sagemaker
-# to work with an ensemble of teachers
-
+# to work with an ensemble of teachers 
 
 class DistillationTrainingArguments(TrainingArguments):
     def __init__(self, *args, alpha=0.5, temperature=2.0, **kwargs):
@@ -152,9 +157,6 @@ if wandb_log:
     wandb.init(project='babylm', name=MODEL_NAME)
 
 
-
-
-
 training_args = DistillationTrainingArguments(
     output_dir=MODEL_OUTPUT,
     overwrite_output_dir=True,
@@ -177,21 +179,16 @@ training_args = DistillationTrainingArguments(
     temperature=TEMPERATURE,
 )
 
-
 trainer = DistillationTrainer(
         student,
         training_args,
-        teacher_models=teachers,
+        teacher_models=teacher1,
         data_collator=data_collator,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-
     )
 
-
 trainer.train()
-
-
 trainer.save_model(MODEL_OUTPUT)
 tokenizer.save_pretrained(MODEL_OUTPUT)
 
